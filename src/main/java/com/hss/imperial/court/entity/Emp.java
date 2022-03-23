@@ -63,7 +63,7 @@ public class Emp {
         return "Emp{" +
                 "empId=" + empId +
                 ", empName='" + empName + '\'' +
-                ", emoPosition='" + empPosition + '\'' +
+                ", empPosition='" + empPosition + '\'' +
                 ", loginAccount='" + loginAccount + '\'' +
                 ", loginPassword='" + loginPassword + '\'' +
                 '}';

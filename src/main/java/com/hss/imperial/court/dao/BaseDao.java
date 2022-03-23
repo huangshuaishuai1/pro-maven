@@ -48,8 +48,7 @@ public class BaseDao<T> {
     public int update(String sql, Object... parameters) {
         Connection connection = JDBCUtils.getConnection();
         try {
-            int affectedRowNumbers = runner.update(connection,sql,parameters);
-            return affectedRowNumbers;
+            return runner.update(connection,sql,parameters);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);

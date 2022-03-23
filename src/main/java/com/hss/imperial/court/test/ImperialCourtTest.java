@@ -19,7 +19,12 @@ public class ImperialCourtTest {
         Emp singleBean = baseDao.getSingleBean(sql, Emp.class, 1);
         System.out.println(singleBean);
     }
-
+    @Test
+    public void queryForOne1() {
+        String sql = "select emp_position empPosition from t_emp where emp_id=?";
+        Emp singleBean = baseDao.getSingleBean(sql, Emp.class, 1);
+        System.out.println(singleBean);
+    }
     @Test
     public void testQueryForList() {
         String sql = "select emp_id empId, emp_name empName, emp_position empPosition, login_account loginAccount, login_password loginPassword from t_emp";
@@ -45,4 +50,9 @@ public class ImperialCourtTest {
         JDBCUtils.releaseConnection(connection);
     }
 
+    @Test
+    public void testSubString() {
+        String subString = "aaa.png".substring("aaa.png".lastIndexOf("."));
+        System.out.println("substring = " + subString);
+    }
 }
