@@ -15,8 +15,12 @@ public class ImperialCourtTest {
 
     @Test
     public void queryForOne() {
-        String sql = "select emp_id empId, emp_name empName, emp_position empPosition, login_account loginAccount, login_password loginPassword from t_emp where emp_id=?";
-        Emp singleBean = baseDao.getSingleBean(sql, Emp.class, 1);
+        String sql = "select emp_id empId, emp_name empName," +
+                " emp_position empPosition, " +
+                "login_account loginAccount," +
+                " login_password loginPassword " +
+                "from t_emp where login_account=? and login_password=?";
+        Emp singleBean = baseDao.getSingleBean(sql, Emp.class, "xiaoxuanzi1654", "25325C896624D444B2E241807DCAC98B");
         System.out.println(singleBean);
     }
     @Test

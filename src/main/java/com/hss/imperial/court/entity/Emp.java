@@ -34,11 +34,11 @@ public class Emp {
         this.empName = empName;
     }
 
-    public String getEmoPosition() {
+    public String getEmpPosition() {
         return empPosition;
     }
 
-    public void setEmoPosition(String empPosition) {
+    public void setEmpPosition(String empPosition) {
         this.empPosition = empPosition;
     }
 

@@ -33,12 +33,15 @@ public class TransectionFilter implements Filter {
         // 前置操作：排除静态组员
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String servletPath = request.getServletPath();
-        String extName = servletPath.substring(servletPath.lastIndexOf("."));
+        if (servletPath.contains(".")) {
 
-        if (staticResourceExtNameSet.contains(extName)) {
-            // 如果检测到是静态资源，直接放行。
-            filterChain.doFilter(servletRequest,servletResponse);
-            return;
+            String extName = servletPath.substring(servletPath.lastIndexOf("."));
+
+            if (staticResourceExtNameSet.contains(extName)) {
+                // 如果检测到是静态资源，直接放行。
+                filterChain.doFilter(servletRequest,servletResponse);
+                return;
+            }
         }
 
 
