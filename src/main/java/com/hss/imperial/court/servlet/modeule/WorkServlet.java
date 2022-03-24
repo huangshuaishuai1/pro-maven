@@ -39,7 +39,7 @@ public class WorkServlet extends ModelBaseServlet {
         // 2. 根据memorialsId 从 Service中查询Memorials 对象
 
         Memorials memorials = memorialsService.getMemorialsDetailById(memorialsId);
-
+        System.out.println(memorials);
         //3.将memorials 对象存入请求域
         request.setAttribute("memorials", memorials);
 

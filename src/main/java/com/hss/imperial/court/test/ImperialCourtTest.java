@@ -20,7 +20,7 @@ public class ImperialCourtTest {
                 "login_account loginAccount," +
                 " login_password loginPassword " +
                 "from t_emp where login_account=? and login_password=?";
-        Emp singleBean = baseDao.getSingleBean(sql, Emp.class, "xiaoxuanzi1654", "25325C896624D444B2E241807DCAC98B");
+        Emp singleBean = baseDao.getSingleBean(sql, Emp.class, "xiaoxuanzi1654", "123");
         System.out.println(singleBean);
     }
     @Test
