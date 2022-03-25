@@ -39,13 +39,35 @@ public class WorkServlet extends ModelBaseServlet {
         // 2. 根据memorialsId 从 Service中查询Memorials 对象
 
         Memorials memorials = memorialsService.getMemorialsDetailById(memorialsId);
-        System.out.println(memorials);
+//        System.out.println(memorials);
+        Integer memorialsStatus = memorials.getMemorialsStatus();
+
+        // 判断奏折状态
+        if (memorialsStatus == 0) {
+            // 更新奏折状态：数据库修改
+            memorialsService.updateMemorialsStatusToRead(memorialsId);
+
+            // 更新奏折状态：当前对象修改
+            memorials.setMemorialsStatus(1);
+        }
+
         //3.将memorials 对象存入请求域
         request.setAttribute("memorials", memorials);
 
 //        4.解析渲染视图
         String templateName = "memorials_detail";
         processTemplate(templateName, request, response);
+
+    }
+
+
+    protected void feedBack(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String memorialsId = request.getParameter("memorialsId");
+        String feedbackContent = request.getParameter("feedbackContent");
+
+        memorialsService.updateMemorialsFeedBack(memorialsId, feedbackContent);
+
+        response.sendRedirect(request.getContextPath() + "/work?method=showMemorialsDigestList");
 
     }
 }
